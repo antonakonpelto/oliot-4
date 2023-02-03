@@ -1,8 +1,4 @@
-
-
 var nappi1 = document.getElementById("btn1").classList;
-
-// Päivämäärä dd.mm.yyyy hh.mm.ss
 
 var updating = false;
 var tilitehty = false;
@@ -136,6 +132,7 @@ function kysy (historia) {
 function hankiAika() {
     var paivamaara = new Date();
     paivaysIlmanUCT = paivamaara.getDate() +"."+ paivamaara.getMonth()   +"."+ paivamaara.getFullYear() +" "+ paivamaara.getHours() +"."+ paivamaara.getMinutes() + "." +paivamaara.getSeconds();
-    
+    // Päivämäärä dd.mm.yyyy hh.mm.ss
+
     return paivaysIlmanUCT;
 }
