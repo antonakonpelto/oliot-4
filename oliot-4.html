@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="oliot-4.js" defer></script>
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: gray;
+        }
+        button{
+            background-color: black;
+            color: white;
+            border-radius: 30px;
+        }
+        button:hover{
+            background-color: gray;
+        }
+        input{
+            background-color: black;
+            color: white;
+        }
+        .hidden{display: none;}
+        .show{display: block;}
+    </style>
+</head>
+<body>
+    <button type="button" onclick="pankkiTili.update()" id="btn1" class="hidden">Autom. päivitys</button>
+
+    <br><br>
+
+    <input type="text" placeholder="Tilinumero" id="tilinumero" class="tilinumero">
+    <button type="button" onclick="kysy();">Lisää tilinumero</button> <span id="tiliIlmoite"></span>
+
+    <div class="info">
+
+        <br><br>
+
+        <input type="text" placeholder="Talleta" id="formTallete" class="talletus">
+        <button type="button" onclick="pankkiTili.talleta();">Talleta</button> <span id="talleteIlmoite"></span>
+
+        <br><br>
+
+        <input type="text" placeholder="Nosta" id="formNosto" class="nosto">
+        <button type="button" onclick="pankkiTili.nosta();">Nosta</button>  <span id="nostoIlmoite"></span>
+
+        <br><br>
+
+        <button type="button" onclick="pankkiTili.naytaTiedot();">Näytä tilitiedot</button>
+        <p id="tilitiedot"></p>
+    </div>
+    
+</body>
+</html>
