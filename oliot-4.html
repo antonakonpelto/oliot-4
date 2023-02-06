@@ -4,46 +4,74 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="oliot-4.js" defer></script>
+    <script src="oliot-5.js" defer></script>
     <title>Document</title>
     <style>
         body{
             font-family: Verdana, Geneva, Tahoma, sans-serif;
-            background-color: gray;
+            background-color: rgb(12, 12, 12);
+            color: rgb(255, 255, 255);
+            /* background-image: url("atm.jpg"); */
+            scroll-behavior: smooth;
+            font-size: 16px;
         }
         button{
-            background-color: black;
-            color: white;
-            border-radius: 30px;
+            background-color: rgb(12, 12, 12);
+            color: rgb(255, 255, 255);
+            padding: 3px;
+            margin-left: 5px;
+            outline: none;
+            border: none;
+            transition: ease-in 0.3s;
         }
         button:hover{
-            background-color: gray;
+            background-color: rgb(32, 32, 32);
+            transition: ease-out 0.3    s;
+            box-shadow: 0px;
+            outline: none;
+            border: none;
         }
         input{
-            background-color: black;
+            background-color: rgb(13, 13, 13);
             color: white;
+            outline: none;
+            border: none;
+            border-bottom: 1px solid white;
         }
         .on{
             background-color: white;
             color: black;
-            border-radius: 30px;
         }
         ul li{
             list-style-type: none;
         }
+        .tilinumero11{
+            color: rgba(128, 128, 128, 0.007);
+        }
         .hidden{display: none;}
         .show{display: block;}
+        /* .info{
+            background-color: rgba(0, 0, 0, 0.572) ;
+            width: fit-content;
+        } */
+        .otsikko{
+             color: rgb(255, 255, 255);
+             font-size: 30px;
+        }
     </style>
 </head>
 <body>
-    <button type="button" onclick="pankkiTili.update()" id="btn1" class="hidden">Autom. päivitys</button>
-
-    <br><br>
-
-    <input type="text" placeholder="Tilinumero" id="tilinumero" class="tilinumero">
-    <button type="button" onclick="kysy();">Lisää tilinumero</button> <span id="tiliIlmoite"></span>
-
+    <p class="otsikko">
+        Pankki
+    </p>
     <div class="info">
+        <button type="button" onclick="pankkiTili.update()" id="btn1" class="hidden">Autom. päivitys</button>
+
+        <br><br>
+
+        <input type="text" placeholder="Tilinumero" id="tilinumero" class="tilinumero">
+        <button type="button" onclick="kysy();">Lisää tilinumero</button> <span id="tiliIlmoite"></span>
+
         
         <br><br>
 
@@ -57,7 +85,7 @@
 
         <br><br>
 
-        <button type="button" onclick="pankkiTili.naytaTiedot();">Näytä tilitiedot</button>
+        <button type="button" onclick="pankkiTili.naytaTiedot(true);" id="buttonNayta">Näytä tilitiedot</button> <button type="button" onclick="pankkiTili.naytaTiedot(false)" id="buttonPiilota" class="hidden">Piilota tilitiedot</button>
         <!-- <p id="tilitiedot"></p> -->
         <ul id="tilitiedot"></ul>
     </div>
