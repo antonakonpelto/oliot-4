@@ -29,7 +29,7 @@ class Pankki {
 
             } else {
                 if(this.saldo + tallete <0){ // Katsoo meneekö miinukselle
-                    document.getElementById("talleteIlmoite").innerHTML = "Virhe: Et voi nostaa miinuksella"
+                    document.getElementById("talleteIlmoite").innerHTML = "Virhe: Et voi tallettaa miinuksella"
                 }else{
                     if(tallete == 0){ // Jos ei talleta mitään
                         document.getElementById("talleteIlmoite").innerHTML = "Et voi tallettaa 0€"
@@ -122,6 +122,16 @@ function kysy (historia) {
         pankkiTili = new Pankki(tilinNumero, 0, ["<br>"]);//Undefined muutetaan 0, ja alkuun <br>
         pankkiTili.historia.push(hankiAika() + " Kirjauduit tilillesi <br>");
         tilitehty = true; // tili on tehty
+
+        if(pankkiTili.checkValidity(tilinNumero) == true){ // Jos checkValidity() palauttaa truen.
+            document.getElementById("tiliIlmoite").innerHTML = "Tilinumero lisätty";
+            pankkiTili =  new Pankki(tilinNumero, 0, ["<br>"]);//Undefined muutetaan 0, ja alkuun <br>
+            pankkiTili.historia.push(hankiAika() + " Kirjauduit tilillesi <br>");
+            tilitehty = true; // tili on tehty
+        } else {
+            document.getElementById("tiliIlmoite").innerHTML = "Tilinumero on virheellinen";
+        }
+        
     }
     
     if(tilitehty == true){ // Kun tilitehty autom. päivitys nappi tulee näkyviin
