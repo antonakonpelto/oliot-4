@@ -4,10 +4,12 @@ var updating = false;
 var tilitehty = false;
 
 class Pankki {
-    constructor(tilinumero, saldo, historia) {
+    constructor(tilinumero, saldo, historia, korkoProsentti, korko) {
         this.tilinumero = String(tilinumero);
         this.saldo = Number(saldo);
         this.historia = historia;
+        this.korkoProsentti = Number(korkoProsentti);
+        this.korko = Number(korko);
     }
     update() { // Itestäänpäivittyvä historia
         if(updating == false){
@@ -99,29 +101,39 @@ class Pankki {
             document.getElementById("formNosto").value = ""; // Tyhjentää input kentän
         }
     }
-    naytaTiedot(x) {
+
+    korotus() { // Kasvattaa korkoa
+        this.korko = this.saldo / this.korkoProsentti;
+        console.log(this.korko + "€");
+        
+    } 
+
+    naytaTiedot(x, paivita) {
         var buttonNayta = document.getElementById("buttonNayta").classList;
         var buttonPiilota = document.getElementById("buttonPiilota").classList;
+        var buttonPaivita = document.getElementById("paivitaTietoja").classList;
         if(x == false && updating == true){
             this.update();
         }
-        if(x == true || updating == true){
-            buttonPiilota.add("show")
-            buttonNayta.add("hidden")
+        if(x == true || updating == true || paivita == true){
+            buttonPiilota.add("show");
+            buttonPaivita.add("show");
+            buttonNayta.add("hidden");
             if(tilitehty == true){ // Jos tili on tehty
                 var historianTeksti = "";
                 document.getElementById("tilitiedot").innerHTML = " ";
                 for (let i = 1; i < this.historia.length; i++) {
                     historianTeksti += "<li>- " + this.historia[i] + "</li>"
-                    document.getElementById("tilitiedot").innerHTML ="<li>" + "Tilinumero: " + this.tilinumero + "</li>" +"<li>" + "Saldo: " + this.saldo +"€"+ "<br>"  + "</li>" + "<li>" + "Tilihistoria: " + historianTeksti + "</li>";
+                    document.getElementById("tilitiedot").innerHTML ="<li>" + "Tilinumero: " + this.tilinumero + "</li>" +"<li>" + "Saldo: " + this.saldo +"€"+ "<br>"  + "</li>" +"<li>"+ "Korko: "+ this.korko +"€" + "</li>" + "<li>" + "Tilihistoria: " + historianTeksti + "</li>";
                 }
                 // Näyttää tilinumeron, saldon ja tilihistorian.
             } else { // Ei näytä jos tilinumeroa ei ole annettu
                  document.getElementById("tilitiedot").innerHTML = "Syötä tilinumerosi";
             }
         } else if (x == false && updating == false){
-            buttonPiilota.remove("show")
-            buttonNayta.remove("hidden")
+            buttonPiilota.remove("show");
+            buttonNayta.remove("hidden");
+            buttonPaivita.remove("show");
             document.getElementById("tilitiedot").innerHTML = "";
         } else {
             console.log("error")
@@ -149,6 +161,7 @@ class Valid extends Pankki{
 }
 
 
+
 var pankkiTili = new Valid(undefined, 0, []);
 // Tekee uuden Pankin.      undefined on pitämässä paikkaa
 
@@ -161,7 +174,7 @@ function kysy () {
     }else {
         if(pankkiTili.checkValidity(tilinNumero) == true){ // Jos checkValidity() palauttaa truen.
             document.getElementById("tiliIlmoite").innerHTML = "Tilinumero lisätty";
-            pankkiTili = new Pankki(tilinNumero, 0, ["<br>"]);//Undefined muutetaan 0, ja alkuun <br>
+            pankkiTili = new Pankki(tilinNumero, 0, ["<br>"], 10);//Undefined muutetaan 0, ja alkuun <br>
             pankkiTili.historia.push(hankiAika() + " Kirjauduit tilillesi <br>");
             tilitehty = true; // tili on tehty
         } else {

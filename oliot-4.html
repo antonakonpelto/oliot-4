@@ -15,6 +15,10 @@
             scroll-behavior: smooth;
             font-size: 16px;
         }
+        .buttonArea{
+            width: 50%;
+            height: 100%;
+        }
         button{
             background-color: rgb(12, 12, 12);
             color: rgb(255, 255, 255);
@@ -76,16 +80,19 @@
         <br><br>
 
         <input type="text" placeholder="Talleta" id="formTallete" class="talletus">
-        <button type="button" onclick="pankkiTili.talleta();">Talleta</button> <span id="talleteIlmoite"></span>
+        <button type="button" onclick="pankkiTili.talleta();pankkiTili.korotus();">Talleta</button> <span id="talleteIlmoite"></span>
 
         <br><br>
 
         <input type="text" placeholder="Nosta" id="formNosto" class="nosto">
-        <button type="button" onclick="pankkiTili.nosta();">Nosta</button>  <span id="nostoIlmoite"></span>
+        <button type="button" onclick="pankkiTili.nosta();pankkiTili.korotus();">Nosta</button>  <span id="nostoIlmoite"></span>
 
         <br><br>
+        <div class="buttonArea">
+            <button type="button" onclick="pankkiTili.naytaTiedot(true);" id="buttonNayta">Näytä tilitiedot</button> <button type="button" onclick="pankkiTili.naytaTiedot(true)" class="hidden" id="paivitaTietoja">Päivitä tiedot</button>  <button type="button" onclick="pankkiTili.naytaTiedot(false)" id="buttonPiilota" class="hidden">Piilota tilitiedot</button>
 
-        <button type="button" onclick="pankkiTili.naytaTiedot(true);" id="buttonNayta">Näytä tilitiedot</button> <button type="button" onclick="pankkiTili.naytaTiedot(false)" id="buttonPiilota" class="hidden">Piilota tilitiedot</button>
+        </div>
+       
         <!-- <p id="tilitiedot"></p> -->
         <ul id="tilitiedot"></ul>
     </div>
