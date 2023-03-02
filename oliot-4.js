@@ -307,6 +307,14 @@ class Pankki {
             document.getElementById("tilitiedot").innerHTML = "Syötä tilinumerosi";
         }
     }
+    tuotto(){
+        let tuottoSumma = document.getElementById("tuottoMaara").value;
+        document.getElementById("tuottoTeksti").innerHTML = tuottoSumma;
+        let vuotuinenTuotto = this.saldo + (this.saldo * 1 / 100)
+        console.log(this.saldo * 1 / 100);
+        let vuotuisenTuotonLaskeminen = vuotuinenTuotto * tuottoSumma;
+        console.log(vuotuisenTuotonLaskeminen);
+    }
 
     naytaTiedot(x, paivita) { // Parametrit tulee vastaan HTML-napeilta
         // Tietonappuloille ja autom. päivitys napeille omat muuttujat
