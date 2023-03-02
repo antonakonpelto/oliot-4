@@ -20,11 +20,12 @@
             height: 100%;
         }
         button{
-            background-color: rgb(12, 12, 12);
+            background-color: rgb(56, 56, 56);
             color: rgb(255, 255, 255);
             padding: 3px;
             margin-left: 5px;
             outline: none;
+            border-radius: 5px;
             border: none;
             transition: ease-in 0.3s;
         }
@@ -54,10 +55,20 @@
         }
         .hidden{display: none;}
         .show{display: block;}
-        /* .info{
-            background-color: rgba(0, 0, 0, 0.572) ;
-            width: fit-content;
-        } */
+        .info{
+            background-color: rgba(0, 0, 0, 0.572);
+            width: 49.5%;
+            float: left;
+        }
+        .vasenFloatti{
+            height: 100%;
+            width: 49.5%;
+            float: right;
+            background-color: rgba(0, 0, 0, 0.572);
+        }
+        .parentti{
+            display: flex;
+        }
         .otsikko{
              color: rgb(255, 255, 255);
              font-size: 30px;
@@ -68,34 +79,58 @@
     <p class="otsikko">
         Pankki
     </p>
-    <div class="info">
-        <button type="button" onclick="pankkiTili.update()" id="btn1" class="hidden">Autom. päivitys</button>
 
-        <br><br>
-
-        <input type="text" placeholder="Tilinumero" id="tilinumero" class="tilinumero">
-        <button type="button" onclick="kysy();">Lisää tilinumero</button> <span id="tiliIlmoite"></span>
-
-        
-        <br><br>
-
-        <input type="text" placeholder="Talleta" id="formTallete" class="talletus">
-        <button type="button" onclick="pankkiTili.talleta();pankkiTili.korotus();">Talleta</button> <span id="talleteIlmoite"></span>
-
-        <br><br>
-
-        <input type="text" placeholder="Nosta" id="formNosto" class="nosto">
-        <button type="button" onclick="pankkiTili.nosta();pankkiTili.korotus();">Nosta</button>  <span id="nostoIlmoite"></span>
-
-        <br><br>
-        <div class="buttonArea">
-            <button type="button" onclick="pankkiTili.naytaTiedot(true);" id="buttonNayta">Näytä tilitiedot</button> <button type="button" onclick="pankkiTili.naytaTiedot(true)" class="hidden" id="paivitaTietoja">Päivitä tiedot</button>  <button type="button" onclick="pankkiTili.naytaTiedot(false)" id="buttonPiilota" class="hidden">Piilota tilitiedot</button>
-
-        </div>
-       
-        <!-- <p id="tilitiedot"></p> -->
-        <ul id="tilitiedot"></ul>
-    </div>
+    <div class="parenti">
+        <div class="info">
+            <button type="button" onclick="pankkiTili.update()" id="btn1" class="hidden">Autom. päivitys</button>
     
+            <br><br>
+    
+            <input type="text" placeholder="Tilinumero" id="tilinumero" class="tilinumero">
+            <button type="button" onclick="kysy();">Lisää tilinumero</button> <span id="tiliIlmoite"></span>
+    
+            
+            <br><br>
+    
+            <input type="text" placeholder="Talleta" id="formTallete" class="talletus">
+            <button type="button" onclick="pankkiTili.talleta();">Talleta</button> <span id="talleteIlmoite"></span>
+    
+            <br><br>
+    
+            <input type="text" placeholder="Nosta" id="formNosto" class="nosto">
+            <button type="button" onclick="pankkiTili.nosta();">Nosta</button>  <span id="nostoIlmoite"></span>
+    
+            <br><br>
+            <div> <!--Class hidden--> 
+                <input type="text" placeholder="Lainan määrä" id="buttonLaina"> <span id="lainaTeksti"></span>
+                <button type="button" onclick="pankkiTili.lainaOtto();">Ota lainaa</button>
+                <br><br>
+                <input type="text" placeholder="Maksa lainaa" id="lainanMaksu"> <span id="lainanmaksuTeksti"></span>
+                <button type="button" onclick="pankkiTili.lainanMaksu();">Maksa lainaa</button>
+            </div>
+            
+            <br><br>
+            <div class="buttonArea">
+                <button type="button" onclick="pankkiTili.naytaTiedot(true);" id="buttonNayta">Näytä tilitiedot</button> <button type="button" onclick="pankkiTili.naytaTiedot(true)" class="hidden" id="paivitaTietoja">Päivitä tiedot</button>  <button type="button" onclick="pankkiTili.naytaTiedot(false)" id="buttonPiilota" class="hidden">Piilota tilitiedot</button>
+    
+            </div>
+           
+            <!-- <p id="tilitiedot"></p> -->
+            <ul id="tilitiedot"></ul>
+        </div>
+
+        <div class="vasenFloatti">
+            <input type="text" placeholder="Nettotulot" id="nettoTulot"> <span id="nettoTeksti"></span>
+            <br><br>
+            <button type="button" onclick="pankkiTili.netto()">Lähetä</button>
+
+            <br><br>
+
+            <input type="text" placeholder="Luotonmäärä" id="luottoMaara"> <span id="luottoTeksti"></span>
+            <br><br>
+            <button type="button" onclick="pankkiTili.luotto()">Lähetä</button>
+        </div>
+    </div>    
+
 </body>
 </html>
