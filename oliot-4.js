@@ -11,7 +11,8 @@ class Pankki {
     constructor(tilinumero, saldo, historia, korkoProsentti, korko, luottoraja, laina, lainaaJaljella, nettoTulot, lainaEnnen, luottoprosentti, korkoPlusLainaClassGlobal) {
         this.tilinumero = String(tilinumero);
         this.saldo = Number(saldo);
-        this.historia = historia;
+        this.historia = Array(historia);
+
         this.korkoProsentti = Number(korkoProsentti);
         this.korko = Number(korko);
 
